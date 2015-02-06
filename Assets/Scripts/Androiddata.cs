@@ -16,13 +16,12 @@ public class Androiddata : MonoBehaviour {
 	Vector2 touchDeltaPosition, touchPosition;
 	int touchcount;
 	
-	// Use this for initialization
 	void Start () 
 	{
 		// Disable screen dimming
     	Screen.sleepTimeout = SleepTimeout.NeverSleep;
 
-        //Access to component text of the transforms SendDataValues and assign them to UI text variables
+        //Access to component text of the transforms assign them to UI text variables
         touchPosXText = touchPosX.GetComponent<Text>();
         touchPosYText = touchPosY.GetComponent<Text>();
         touchCountText = touchCount.GetComponent<Text>();
@@ -37,17 +36,9 @@ public class Androiddata : MonoBehaviour {
 	{
 		if (Input.touchCount == 1 && Input.GetTouch(0).phase == TouchPhase.Moved) 
 		{
- //           touchDeltaPosition = Input.GetTouch(0).deltaPosition;
 			touchPosition = Input.GetTouch(0).position;
-			
-//			target.transform.Translate(-touchDeltaPosition.x * speed, -touchDeltaPosition.y * speed, 0);
-         //   transform.Translate(-touchDeltaPosition.x * speed, -touchDeltaPosition.y * speed, 0);
         }
-//		if (Input.touchCount > 1 && Input.GetTouch(0).phase == TouchPhase.Moved) 
-//		{
-//			target.transform.Rotate(-touchDeltaPosition.x * rotspeed, -touchDeltaPosition.y * rotspeed, 0);
-//		}
-		
+
 		touchcount = Input.touchCount;
 		
 		
@@ -64,7 +55,7 @@ public class Androiddata : MonoBehaviour {
 		
 		sendTracking();
 
-        //Update sendDataValues
+        //Update device values
         touchPosXText.text = touchx.ToString("0");
         touchPosYText.text = touchy.ToString("0");
         touchCountText.text = touchcount.ToString();
@@ -74,19 +65,6 @@ public class Androiddata : MonoBehaviour {
         accelZText.text = gyroz.ToString("0.00");
 
 	}
-
-	/*
-	void OnGUI () 
-	{
-        GUI.depth = 0;
-        
-	//	GUI.Label(new Rect(Screen.width/2-40, 280, 500, 20), "Gyro");
-		GUI.Label(new Rect(60, 390, 500, 20), "x: "+gyrox.ToString("0.00"), textstyle);
-		GUI.Label(new Rect(Screen.width/2-25, 390, 500, 20), "y: "+gyroy.ToString("0.00"), textstyle);
-		GUI.Label(new Rect(Screen.width*0.5f + 80, 390, 500, 20), "z: "+gyroz.ToString("0.00"), textstyle);
-		GUI.Label(new Rect(60, 90, 100, 20), touchPosition.ToString(), textstyle);
-        GUI.Label(new Rect(Screen.width - 85, 90, 100, 20), touchcount.ToString(), textstyle);
-	}*/
 	
 	void sendTracking()
 	{

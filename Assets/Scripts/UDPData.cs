@@ -16,8 +16,6 @@ public class UDPData : MonoBehaviour {
 
 	private static int localPort;
 	
-	//public GUIStyle titlestyle, textstyle, fieldstyle, buttonstyle1, buttonstyle2, boxStyle;
-	
     // prefs 
     public static string IP ;  // define in init
     public static int port ;  // define in init
@@ -49,9 +47,6 @@ public class UDPData : MonoBehaviour {
 	// Update is called once per frame
 	void Update () 
 	{	
-	//	send UDP
-	//	[$]<data type> , [$$]<device> , [$$]<item> , <transformation> , <param_1> , <param_2> , .... , <param_N>	
-
         //updating the ipfield if user changes the ip adress
         ipField = AdressSendDataInputField.GetComponent<InputField>().text;
         InputField1.text = ipField;
@@ -59,6 +54,7 @@ public class UDPData : MonoBehaviour {
         portField = PortSendDataInputField.GetComponent<InputField>().text;
         InputField2.text = portField;
 
+        //	send UDP
         if (ButtonChange.sendOn)
         {
             if (first)
@@ -90,73 +86,8 @@ public class UDPData : MonoBehaviour {
         }
 	}
 	
-	/*
-	void OnGUI () 
-	{
-
-        GUI.depth = 1;
-//		GUI.Label(new Rect(Screen.width/2-20, 280, 500, 20), "Gyro");
-//		GUI.Label(new Rect(Screen.width/2-100, 320, 500, 20), "x:"+Androiddata.gyrox);
-//		GUI.Label(new Rect(Screen.width/2-100, 350, 500, 20), "y:"+Androiddata.gyroy);
-//		GUI.Label(new Rect(Screen.width/2-100, 380, 500, 20), "z:"+Androiddata.gyroz);
-				
-		//Network Group
-//		GUI.BeginGroup (new Rect (Screen.width / 2 + 300, Screen.height/2 - 320, 200, 120));
-		GUI.BeginGroup (new Rect (10 , 10, Screen.width-20, Screen.height/2));
-	    //GUI.color = Color.gray;
-		GUI.Box (new Rect (10,20,Screen.width - 40, Screen.height * 0.5f - 40), " ", boxStyle);
-        GUI.Label(new Rect(Screen.width * 0.5f - 60, 40, 100, 20), "SEND DATA", titlestyle);
-		//GUI.color = Color.white;
-		
-		
-		GUI.Label(new Rect(50, 120, 100, 20), "Address:", textstyle);
-		GUI.Label(new Rect(50, 160, 100, 20), "Port:", textstyle);
-		ipField = GUI.TextField (new Rect (Screen.width/2-30, 120, 150, 25), ipField, fieldstyle);
-		portField = GUI.TextField (new Rect (Screen.width/2-30, 160, 150, 25), portField, fieldstyle);
-		
-GUI.enabled = !flag;				
-		//Start sending UDP
-		if (GUI.Button (new Rect (Screen.width/2-130, 195, 90, 80), "Connect", buttonstyle1)) 
-		{
-			IP = ipField;
-			port = int.Parse(portField);
-			
-			init();
-			
-			flag=true;
-			Debug.Log("Start UDP");
-			Handheld.Vibrate();
-		}	
-GUI.enabled = true;	
-		
-GUI.enabled = flag;		
-		//Stop sending UDP
-		if (GUI.Button (new Rect (Screen.width/2+ 15, 195, 90, 80), "Disconnect", buttonstyle2)) 
-		{		
-			flag=false;
-			client.Close();
-			Debug.Log("Stop UDP");
-			Handheld.Vibrate();
-		}
- GUI.enabled = true;
-		
-		GUI.EndGroup (); // end network group
-		 			
-	}
-    */
-	
-	
 	public static void init()
-    {       			
-//        Debug.Log("UDPSend.init()");     
-
-        // define
-//        IP="127.0.0.1";
-//        port=1202;   
-		
-        // ----------------------------
-        // Send
-        // ----------------------------
+    { 
 
         remoteEndPoint = new IPEndPoint(IPAddress.Parse(IP), port);
 
@@ -176,8 +107,6 @@ GUI.enabled = flag;
                 {
                     // UTF8 encoding to binary format.
                      byte[] data = Encoding.UTF8.GetBytes(message);
-			
-			//byte[] data = Encoding.ASCII.GetBytes(message); asci
 
                     // Send the message to the remote client.
                    client.Send(data, data.Length, remoteEndPoint);		
