@@ -6,7 +6,8 @@ Phone data is streamed over UDP to any application that is able to read a UDP so
 
 *[$]device_type,[$$]device_name,[$$$]data_type,data_name,X,Y,Z,P;*
 
-![rehamote.png](http://i.imgur.com/14BZ40p.png)
 
-# Install: #
+# Google Play: #
 https://play.google.com/store/apps/details?id=com.RehabNet.RehaMote
+
+![rehamote.png](http://i.imgur.com/14BZ40p.png)
