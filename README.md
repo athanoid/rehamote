@@ -10,7 +10,6 @@ Phone data is streamed over UDP to any application that is able to read a UDP so
 # Google Play: #
 https://play.google.com/store/apps/details?id=com.RehabNet.RehaMote
 
-GUI by: [Teresa P](https://github.com/Teresa-P)
 
 ![rehamote.png](http://i.imgur.com/14BZ40p.png)
 
